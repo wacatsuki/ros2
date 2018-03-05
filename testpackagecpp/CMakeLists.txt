@@ -16,21 +16,21 @@ find_package(rmw_implementation REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
-#include_directories(${rclcpp_INCLUDE_DIRS}
-#		    ${rmw_implementation_INCLUDE_DIRS}
-#		    ${std_msgs_INCLUDE_DIRS}
-#		    ${geometry_msgs_INCLUDE_DIRS})
+include_directories(${rclcpp_INCLUDE_DIRS}
+		    ${rmw_implementation_INCLUDE_DIRS}
+		    ${std_msgs_INCLUDE_DIRS}
+		    ${geometry_msgs_INCLUDE_DIRS})
 
 add_executable(message_sender_node message_sender.cpp)
 ament_target_dependencies(message_sender_node geometry_msgs rclcpp rmw_implementation std_msgs)
 
 
-#target_link_libraries(message_sender
-#		    ${rclcpp_LIBRARIES}
-#		    ${rmw_LIBRARIES}
-#                   ${rmw_implementation_LIBRARIES}
-#		    ${std_msgs_LIBRARIES}
-#		    ${geometry_msgs_LIBRARIES})
+target_link_libraries(message_sender
+		    ${rclcpp_LIBRARIES}
+		    ${rmw_LIBRARIES}
+        ${rmw_implementation_LIBRARIES}
+		    ${std_msgs_LIBRARIES}
+		    ${geometry_msgs_LIBRARIES})
 
 
 install(TARGETS message_sender_node DESTINATION lib/${PROJECT_NAME})
